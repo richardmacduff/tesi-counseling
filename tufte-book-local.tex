@@ -1,0 +1,46 @@
+\usepackage[italian]{babel}	%corretta gestione della sllabazione
+\usepackage[utf8]{inputenc} %corretta gestione delle lettere accentate
+%\linespread{1.5} %interlinea 1.5 WALTER
+
+%definiamo qualche variabile
+\newcommand{\candidato}{Candidato: Dott. Walter Vannini}
+\newcommand{\relatore}{Relatore: D.ssa A. Scalognini}
+\newcommand{\aipac}{Scuola Professionale di Counseling}
+\newcommand{\direttore}{Direttore Prof. Franco Nanetti}
+\newcommand{\sede}{Sede di Pesaro}
+\newcommand{\annoaccademico}{Triennio 2008 -- 2010}
+
+%preso da tufte-common.def per modificare il margine sinistro
+\ifthenelse{\boolean{@tufte@afourpaper}}
+  {\geometry{a4paper,left=39.8mm,top=27.4mm,headsep=2\baselineskip,textwidth=92mm,marginparsep=8.2mm,marginparwidth=49.4mm,textheight=49\baselineskip,headheight=\baselineskip}}
+
+%riveduto e corretto pro tesi AIPAC
+\newcommand{\maketitlepage}[0]{%
+  \cleardoublepage%
+  {%
+  \sffamily%
+  \begin{fullwidth}%
+  \begin{center}
+    \includegraphics[height=1.5cm]{logoAIPAC.jpg} 
+    \vspace{1pc}
+    \fontsize{14}{24}\selectfont\par\noindent\allcaps{\aipac}%  
+    \fontsize{13}{24}\selectfont\par\noindent\allcaps{\direttore}%  
+    \fontsize{12}{20}\selectfont\par\noindent\allcaps{\sede}%  
+  \end{center}  
+
+  \vspace{11.5pc}%
+  \fontsize{36}{40}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklesstitle}}%
+  \vspace{11.5pc}%
+
+  \fontsize{18}{20}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\candidato}}%
+
+  \fontsize{18}{40}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\relatore}}%
+  
+
+  \vfill%
+  \fontsize{14}{16}\selectfont\par\noindent\allcaps{\annoaccademico}%  
+  \end{fullwidth}%
+  }
+  \thispagestyle{empty}%
+  \clearpage%
+}

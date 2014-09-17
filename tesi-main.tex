@@ -1,0 +1,202 @@
+%oneside=stessi margini su pagine pari e dispari
+%openany=capitoli possono iniziare sia su pagine pari che dispari
+\documentclass[a4paper,oneside,openany, justified]{tufte-book} %eventualmente marginals=raggedouter WALTER
+
+\hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
+
+%%
+% Book metadata
+\title{Il caso di S.}
+\author[autore]{Walter Vannini}
+%\publisher{ItsAPublisher}
+
+%%
+% Just some sample text
+\usepackage{lipsum}
+
+%%
+% For nicely typeset tabular material
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{rotating}
+%%
+% For graphics / images
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+%%
+% Prints argument within hanging parentheses (i.e., parentheses that take
+% up no horizontal space).  Useful in tabular environments.
+\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}}
+
+%%
+% Prints an asterisk that takes up no horizontal space.
+% Useful in tabular environments.
+\newcommand{\hangstar}{\makebox[0pt][l]{*}}
+
+%%
+% Prints a trailing space in a smart way.
+\usepackage{xspace}
+
+
+
+% Prints the month name (e.g., January) and the year (e.g., 2008)
+\newcommand{\monthyear}{%
+  \ifcase\month\or Gennaio\or Febbraio\or Marzo\or Aprile\or Maggio\or Giugno\or
+  Luglio\or Agosto\or Settembre\or Ottobre\or Novembre\or
+  Dicembre\fi\space\number\year
+}
+
+
+% Prints an epigraph and speaker in sans serif, all-caps type.
+\newcommand{\openepigraph}[2]{%
+  %\sffamily\fontsize{14}{16}\selectfont
+  \begin{fullwidth}
+  \sffamily\large
+  \begin{doublespace}
+  \noindent\allcaps{#1}\\% epigraph 
+  \noindent\allcaps{#2}% author
+  \end{doublespace}
+  \end{fullwidth}
+}
+
+% Inserts a blank page
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+
+\usepackage{units}
+
+% Typesets the font size, leading, and measure in the form of 10/12x26 pc.
+\newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
+
+% Generates the index
+\usepackage{makeidx}
+\makeindex
+
+%WALTER added to allow correct working of sidenote inside {verse}
+%as suggested by Kevin Godby
+
+
+
+\begin{document}
+
+
+% Front matter
+\frontmatter
+
+% r.1 blank page
+%\blankpage evitare di iniziare con una pagina vuota
+
+\label{sec:epigrafi}
+% v.2 epigraphs
+\newpage\thispagestyle{empty}
+\openepigraph{%
+Il pubblico ha più familiarità con il cattivo design che con il buon design.
+è, a tutti gli effetti, condizionato a preferire il cattivo design, perché è
+quello in cui si ritrova a vivere.
+Il nuovo diventa minaccioso, il vecchio è rassicurante.
+}{Paul Rand%, {\itshape Design, Form, and Chaos}
+}
+\vfill
+\openepigraph{%
+Un designer sa di avere raggiunto la perfezione
+non quando non c'è altro da aggiungere,
+ma quando non c'è altro da togliere.
+}{Antoine de Saint-Exupéry}
+\vfill
+\openepigraph{%
+\ldots chi progetta un nuovo sistema non deve esserne solo l'implementatore
+e il primo utente su larga scala; il designer dovrebbe anche scrivere il primo manuale utente\ldots
+Se non avessi partecipato appieno a tutte queste attività,
+non avrei mai apportato letteralmente centinaia di miglioramenti,
+perché non ci avrei mai pensato o non li avrei ritenuti importanti. 
+}{Donald E. Knuth}
+\openepigraph{%
+\ldots Inconsistenze logiche {\ldots} se l'Universo avesse dovuto preoccuparsi di simili quisquilie, non sarebbe sopravvissuto ai primi dieci nanosecondi
+}{Douglas N. Adams}
+
+% r.3 full title page
+\label{sec:copertina}% i contenuti sono in tufte-book-local.tex
+\maketitle
+
+
+% v.4 copyright page
+\newpage
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+Copyright \copyright\ \the\year\ \thanklessauthor
+
+%\par\smallcaps{Edito da \thanklesspublisher}
+
+\par\smallcaps{impaginato con Tufte-\LaTeX}
+
+\par Quest'opera è stata rilasciata sotto la licenza Creative Commons Attribution-NonCommercial-ShareAlike 2.5 Italy. Per leggere una copia della licenza visita il sito web \url{http://creativecommons.org/licenses/by-nc-sa/2.5/it/} o spedisci una lettera a Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+\index{license}
+
+\par\textit{Prima edizione, \monthyear}
+\end{fullwidth}
+
+% r.5 contents
+\tableofcontents
+
+%%uncomment as necessary
+%\listoffigures
+
+%%uncomment as necessary
+%\listoftables
+
+% r.7 dedication
+
+\clearpage % cleardoublepage in caso di fronte-retro
+
+~\vfill
+\begin{doublespace}
+\noindent\fontsize{18}{22}\selectfont\itshape
+\nohyphenation
+Ringrazio la dottoressa Antonella Scalognini per la pazienza dimostrata e per il suo aiuto costante, uniti a un rigore metodologico capace di illuminare anche le zone più grigie della teoria e della pratica del counseling, che fanno di lei un temine di paragone, nella didattica e nella pratica professionale.
+\end{doublespace}
+\vfill
+\vfill
+
+% r.9 introduction
+%\cleardoublepage va bene solo se fronte-retro
+
+\chapter{Introduzione}
+\label{ch:introduzione}
+\input{capitoli/introduzione}
+ 
+%%
+% Start the main matter (normal chapters)
+\mainmatter
+
+\chapter{Metamodello}
+\label{ch:metamodello}
+\input{capitoli/metamodello}
+
+
+\chapter{Caso di co-counseling: S. M.}
+\label{ch:caso}
+\input{capitoli/caso-clinico}
+
+\chapter{Riflessioni }
+\label{ch:riflessioni}
+\input{capitoli/riflessioni}
+
+\backmatter
+
+\label{ch:biblio}
+\bibliographystyle{plain} %was:plainnat
+\bibliography{capitoli/bibliografia} 
+
+\printindex
+
+\end{document}
+
